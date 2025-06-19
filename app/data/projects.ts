@@ -7,6 +7,7 @@ export const projects: Project[] = [
     description: 'Developed a non-satellite soldier movement monitoring device with advantages of cost-effectiveness, minimal frequency congestion in forested areas, and reduced signal interference in bad weather conditions.',
     technologies: ['IoT', 'RF Communication', 'Embedded Systems', 'C++'],
     year: 2020,
+    image: ['/images/SiluetStarPrajuritsimple.png','/images/SiluetStarPrajuritsimple1.png'],
   },
   {
     id: '2',
@@ -14,6 +15,7 @@ export const projects: Project[] = [
     description: 'Developed smart shoes that detect pressure points on feet to identify habitual foot positions and their effects, providing recommendations for optimal posture.',
     technologies: ['IoT', 'Pressure Sensors', 'Machine Learning', 'Python'],
     year: 2020,
+    image: ['/images/SmartshoesPosisiKaki0.png', '/images/SmartshoesPosisiKaki1.png'],
   },
   {
     id: '3',
