@@ -63,6 +63,6 @@ export const projects: Project[] = [
     description: 'Currently developing a comprehensive Hospital Information and Management System to streamline hospital operations, patient management, and administrative workflows.',
     technologies: ['Next.js', 'NestJS', 'MySQL', 'TypeScript', 'Full-Stack Development'],
     year: 2024,
-    image: ['/images/SIMRSDashboard0.png', '/images/SIMRSDashboard1.png'],
+    image: ['/images/DashboardPasienDokterKunjungan.png', '/images/DashboardStatistik.png', '/images/DashboardPasienData.png'],
   },
 ]; 

@@ -1,12 +1,45 @@
+'use client';
+
 import { Project } from '../types/project';
 import CurtainReveal from './CurtainReveal';
 import Image from 'next/image';
+import React, { useState } from 'react';
 
 interface TimelineProps {
   projects: Project[];
 }
 
 const Timeline: React.FC<TimelineProps> = ({ projects }) => {
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+
+  // Modal component for zoomed image
+  const ImageModal = ({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) => (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: "rgba(0, 0, 0, 0.7) 100%" }}
+      onClick={onClose}
+    >
+      <div
+        className="relative max-w-full max-h-full p-4"
+        onClick={e => e.stopPropagation()}
+      >
+        <button
+          className="absolute top-2 right-2 text-white bg-black bg-opacity-60 rounded-full p-2 hover:bg-opacity-80 focus:outline-none"
+          onClick={onClose}
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <img
+          src={src}
+          alt={alt}
+          className="rounded-lg shadow-lg max-h-[80vh] max-w-[90vw] object-contain"
+        />
+      </div>
+    </div>
+  );
+
   return (
     <div className="relative container mx-auto px-4 py-8">
       <div className="absolute sm:left-0 md:left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200"></div>
@@ -41,7 +74,8 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
                   alt={`${project.title} image ${idx + 1}`}
                   width={150}
                   height={150}
-                  className="mb-2"
+                  className="mb-2 cursor-zoom-in hover:scale-105 transition-transform duration-200"
+                  onClick={() => setZoomedImage(img)}
                 />
                 ))
               : project.image && (
@@ -50,6 +84,8 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
                   alt={project.title}
                   width={150}
                   height={150}
+                  className="cursor-zoom-in hover:scale-105 transition-transform duration-200"
+                  onClick={() => setZoomedImage(typeof project.image === "string" ? project.image : null)}
                 />
                 )
               }
@@ -59,6 +95,14 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
         </div>
       </div>
       ))}      
+
+      {zoomedImage && (
+        <ImageModal
+          src={zoomedImage}
+          alt="Zoomed project image"
+          onClose={() => setZoomedImage(null)}
+        />
+      )}
     </div>
   );
 };
