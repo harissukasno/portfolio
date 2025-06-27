@@ -50,7 +50,42 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
       <div key={project.id} className="relative mb-8">
         <div className="absolute top-1/2 sm:left-0 md:left-1/2 -ml-2 transform -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500"></div>
         <div className="flex flex-col md:flex-row items-center ml-4 md:ml-0 border-b-2 md:border-b-0 pb-5 md:pb-0">
-          <div className="relative p-6 rounded-lg shadow-lg bg-white w-full md:w-1/2 md:mr-8 md:ml-0 mb-4 md:mb-0">
+          <div
+            className="relative p-6 rounded-lg shadow-lg bg-white w-full md:w-1/2 md:mr-8 md:ml-0 mb-4 md:mb-0 group"
+          >
+            {project.link && (
+              <div className="absolute top-2 right-2 z-20">
+                <div className="relative">
+                  <span className="cursor-pointer">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 text-blue-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13.828 10.172a4 4 0 010 5.656m-3.656-3.656a4 4 0 015.656 0m-7.778 7.778a4 4 0 005.656 0l3.536-3.536a4 4 0 00-5.656-5.656l-1.414 1.414"
+                      />
+                    </svg>
+                  </span>
+                  <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-200 p-4 z-30">
+                    <span className="block text-gray-700 text-sm mb-1 font-semibold">Project Link:</span>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 underline break-all"
+                    >
+                      {project.link}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
             <CurtainReveal direction="right">
             <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
             <div className="flex flex-wrap gap-2 mb-3">

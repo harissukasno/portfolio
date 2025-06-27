@@ -64,5 +64,6 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'NestJS', 'MySQL', 'TypeScript', 'Full-Stack Development'],
     year: 2024,
     image: ['/images/DashboardPasienDokterKunjungan.png', '/images/DashboardStatistik.png', '/images/DashboardPasienData.png'],
+    link: "https://github.com/harissukasno"
   },
 ]; 
