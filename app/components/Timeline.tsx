@@ -31,9 +31,11 @@ const Timeline: React.FC<TimelineProps> = ({ projects }) => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <img
+        <Image
           src={src}
           alt={alt}
+          width={800}
+          height={800}
           className="rounded-lg shadow-lg max-h-[80vh] max-w-[90vw] object-contain"
         />
       </div>
